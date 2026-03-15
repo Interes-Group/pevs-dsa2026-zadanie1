@@ -8,7 +8,7 @@
 [![Static Badge](https://img.shields.io/badge/Web-DSA.Interes.Group-aquamarine)](https://dsa.interes.group/assignments/assignments1)
 
 Cieľom zadania je implementovať jednoduchú konzolovú aplikáciu (tzv. CLI - command line interface)
-pre zachytenie sieťových incidentov.
+pre zachytenie a vyriešenie sieťových incidentov.
 
 Program umožní používateľovi zaznamenať incident na počítačovej sieťi a následne získať informácie o incidente, ktorý je
 na rade na vyriešenie. Program udržiava zoznam zariadení v počítačovej sieti. Incident sa vždy odohrá voči nejakému
@@ -17,7 +17,7 @@ zariadeniu v sieti.
 Program má pracovať s triedami a kontajnermi/kolekciami pre udržiavanie objektov (zariadení a incidentov).
 Program má pracovať s dvoma rôznymi kolekciami – fronta a mapa. V mape program ukladá známe zariadenia a vo fronte
 ukladá incidenty, ktoré sa majú vyriešiť.
-Aby bolo možné pokračovať práci pri opakovanom spustení zariadenia a incidenty sú ukladané do súboru.
+Aby bolo možné pokračovať práci pri opakovanom spustení, zariadenia a incidenty sú ukladané do súborov.
 
 Program po skompilovaní je spustení z konzoly/terminálu s tzv. pomenovaným argumentami (options), napríklad:
 
@@ -27,15 +27,15 @@ Program po skompilovaní je spustení z konzoly/terminálu s tzv. pomenovaným a
 
 ## Zoznam zariadení
 
-Program udržiava zoznam zariadení v počítačovej sieti. Program umožňuje pridať a odstrániť zariadenie.
-Zariadenie uchováva nasledovné informácie o zariadení:
+Program udržiava zoznam zariadení v počítačovej sieti. Program umožňuje pridať a vypísať zariadenie.
+Zariadenie uchováva nasledovné informácie:
 
 - IP adresa
 - Názov zariadenia
 - Počet incidentov
 
-Zariadenia sú ukladané do kolekcie typu **map** kde kľúč je IP adresa zariadenia a hodnota je objekt typu
-**zariadenie**.
+Zariadenia sú ukladané do kolekcie typu **map**, kde kľúč je IP adresa zariadenia a hodnota je objekt typu
+**Zariadenie** (alebo príslušnej triedy reprezentujúc zariadenie).
 So záznamami má program pracovať pomocou vstupných argumentov. Program ukladá záznamy do súboru _zariadenia.txt_,
 aby boli dostupné pri ďalšom spustení programu.
 
@@ -43,7 +43,7 @@ aby boli dostupné pri ďalšom spustení programu.
 
 Program umožňuje používateľovi pridať nové zariadenie a vypísať existujúce zariadenia, ktoré program pozná.
 
-O ktorú funkcionalitu programu ide je vyjadrené prvým argumentov, tzv. príkazom, programu.
+O ktorú funkcionalitu programu ide je vyjadrené prvým argumentov, tzv. príkazom, programu:
 
 - `new` - Pridanie nového zariadenia.
 - `list` - Vypísanie zoznamu zariadení.
@@ -59,12 +59,12 @@ Počet incidentov v rámci zariadenia sa zvyšuje o jedna vždy keď je na jeho 
 
 ### Vytvorenie zariadenia
 
-Program umožňuje používateľovi vytvoriť nové zariadenie pomocou príkazu `new` s nasledujúcimi argumentmi:
+Program umožňuje používateľovi vytvoriť nové zariadenie pomocou príkazu `new` s nasledujúcimi argumentami:
 
-| Argument         | Dátový typ | Povinný | Popis                  |
-|------------------|------------|---------|------------------------|
-| `--name NAZOV`   | string     | Áno     | Názov knihy.           |
-| `--ip IP_ADRESA` | string     | Áno     | IPv4 adresa zariadania |
+| Argument         | Dátový typ | Povinný | Popis                   |
+|------------------|------------|---------|-------------------------|
+| `--name NAZOV`   | string     | Áno     | Názov knihy.            |
+| `--ip IP_ADRESA` | string     | Áno     | IPv4 adresa zariadenia. |
 
 Program môže by teda zavolaný napríklad:
 
@@ -72,8 +72,10 @@ Program môže by teda zavolaný napríklad:
 - `./sentinel new --name PC --ip 192.168.1.11`
 - `./sentinel new --name Server --ip 10.10.25.30`
 
+**Nie je možné vytvoriť 2 zariadenia s rovnakou IP adresou**. IP adresa musí byť unikátna v rámci celého programu.
+
 Program musí používateľovi komunikovať výsledok vytvorenia zariadenia a informovať ho o chybných argumentoch,
-či iných chybách. Program nové zariadenie musí uložiť do súbor pre zariadenia.
+či iných chybách. Program nové zariadenie musí uložiť do súboru pre zariadenia.
 
 ### Vypísanie zariadení
 
@@ -81,20 +83,20 @@ Program umožňuje používateľovi vypísať aktuálne uložené zariadenia pom
 Program pre každé zariadenie vypíše v čitateľnej podobe všetky údaje o danom zariadení, kde jednotlivé zariadenia
 sú viditeľne od seba oddelené.
 
-Program môže byť teda zavolaný `./sentinel list`.
+Program môže byť teda zavolaný pre výpis nasledovne: `./sentinel list`.
 
 ## Fronta incidentov
 
-Program spracováva incidenty, ktoré sú ukladá vo fronte. Program o každom incidente ukladá:
+Program spracováva incidenty, ktoré sú ukladané vo fronte. Program o každom incidente eviduje:
 
 - IP adresu zariadenia
 - Časová pečiatka incidentu
 - Typ incidentu
 
 Incident vzniká zapísaním do fronty a používateľ má možnosť zobraziť a vyriešiť incident, ktorý je podľa kolekcie na
-rade. Vyriešením incidentu sa incident odstráni z fronty a ako objekt zaniká. Program pracuje s frontou pomocou
-vstupných argumentov. Program ukladá aktuálny stav fronty do súboru _incidenty.txt_, aby bol dostupný pri ďalšom
-spustení programu.
+rade. Vyriešením incidentu sa incident odstráni z fronty a ako objekt v programe zaniká. Program pracuje s frontou 
+pomocou vstupných argumentov. Program ukladá aktuálny stav fronty do súboru _incidenty.txt_, aby bola dostupná 
+pri ďalšom spustení programu.
 
 ### Práca so frontom incidentov
 
@@ -102,6 +104,7 @@ Program umožňuje používateľovi pracovať s frontou incidentov pomocou prík
 
 - `add` - Pridanie nového incidentu do fronty.
 - `fix` - Vyriešenie incidentu, ktorý je na rade.
+- `count` - Zobrazenie počtu incidentov v fronte.
 
 Za príkazom programu nasledujú argumenty, ktoré sú určené pre daný príkaz. Spustenie programu by teda mohlo vyzerať
 nasledovne:
@@ -112,12 +115,12 @@ nasledovne:
 
 ### Pridanie incidentu do fronty
 
-Program umožňuje pridanie nového incidentu do fronty pomocou príkazu `add` s nasledovnými argumentmi:
+Program umožňuje pridanie nového incidentu do fronty pomocou príkazu `add` s nasledovnými argumentami:
 
-| Argument               | Dátový typ | Povinný | Popis                                             |
-|------------------------|------------|---------|---------------------------------------------------|
-| `--ip IP_ADRESA`       | string     | Áno     | IPv4 adresa zariadania na ktorom vznikol incident |
-| `--type TYP_INCIDENTU` | string     | Nie     | Jeden z dostupných typov incidentu.               |
+| Argument               | Dátový typ | Povinný | Popis                                              |
+|------------------------|------------|---------|----------------------------------------------------|
+| `--ip IP_ADRESA`       | string     | Áno     | IPv4 adresa zariadania na ktorom vznikol incident. |
+| `--type TYP_INCIDENTU` | string     | Nie     | Jeden z dostupných typov incidentu.                |
 
 Typ incidentu môže byť jedna z nasledujúcich hodnôt:
 
@@ -136,57 +139,70 @@ Program môže by teda zavolaný napríklad:
 - `./sentinel add --ip 192.168.1.11 --type sql_injection`
 - `./sentinel add --ip 10.10.25.30`
 
+Incident je možné vytvoriť len na známu IP adresu, t.j. len na zariadenie, ktoré je už známe programu.
+
+Pri vytvorení incidentu je do neho uložená časová pečiatka (počet sekúnd od 1.1.1970, viac info: 
+[https://docs.vultr.com/cpp/standard-library/ctime/time](https://docs.vultr.com/cpp/standard-library/ctime/time))
+kedy incident vznikol a počítadlo incidentov pre dané zariadenie sa zvýši o 1.
+
 Program musí používateľovi komunikovať výsledok zaznamenania incidentu a informovať ho o chybných argumentoch,
-či iných chybách. Pri vytvorení incidentu je do neho uložená časová pečiatka (počet milisekúnd od 1.1.1970)
-kedy incident vznikol a počítadlo incidentov pre dané zariadenie sa zvýši o 1. Program nový incident musí uložiť
-do súbor pre incidenty.
+či iných chybách. Program nový incident musí uložiť do súboru pre incidenty.
 
 ### Spracovanie incidentu
 
 Program umožňuje používateľovi vyriešiť incident, ktorý je podľa fronty aktuálne na rade pre vyriešenie,
 pomocou príkazu `fix`.
 
-Program vypíše všetky informácie o incidente a o servery na ktorom daný incident vznikol. Program následne vypíše
+Program vypíše všetky informácie o incidente a o zariadení, na ktorom daný incident vznikol. Program následne vypíše
 otázku pre vstup od používateľa či incident bol vyriešený.
-Program čaká na vstup od používateľa, ktorý musí byť:
+Program čaká na vstup od používateľa, ktorý musí byť jeden z nasledujúcich možností:
 
 - `Y` - Ak incident bol vyriešený.
 - `N` - Ak incident ešte nie je vyriešený.
 
 Ak používateľ zadá ako vstup `Y` tak incident je odstránený z fronty. Ak používateľ zadá vstup `N`, program nič
-nevykoná. Po zadaní vstupu program uloží aktuálny stav fronty incidentov do súboru a skončí.
+nevykoná. Ak používateľ zadá neplatný vstup je o tom informovaný a otázka s požiadavkov o vstup je vypísaná znovu. 
+Po zadaní vstupu program uloží aktuálny stav fronty incidentov do súboru a skončí.
 
-Program môže byť teda zavolaný `./sentinel fix`.
+Ak vo fronte nie sú žiadne incidenty, program vypíše túto skutočnosť používateľovi a skončí.
+
+Program môže byť teda zavolaný nasledovne: `./sentinel fix`.
+
+### Počet incidentov v fronte
+
+Program pri zadaní príkazu `count` vypíše počet incidentov v fronte. Ak je fronta prázdna, vypíše jednoducho číslo 0.
+
+Program môže byť teda zavolaný nasledovne: `./sentinel count`.
 
 ## Implementácia
 
-V rámci implementácie môžte použiť všetky štandardné funkcie knižnice jazyka C++, v štandarde C++17. Kód musí byť
+V rámci implementácie môžete použiť všetky štandardné funkcie a knižnice jazyka C++, v štandarde C++17. Kód musí byť
 skompilovateľný základnou inštaláciou programu **G++**, takže pozor na Windows/Mac špecifické kompilátory.
 
-Funkcionalitu programu rozdeľte do niekoľkých funkcií, ktoré následne použijete v programe.
+Funkcionalitu programu rozdeľte do niekoľkých funkcií a tried, ktoré následne použijete v programe.
 
 Program implementujte v jednom súbore _main.cpp_, ktorý musí byť umiestnený v priečinku _src_ v tomto repozitáry. Ak je
 zdrojový súbor umiestnený na inom mieste, alebo bude nazvaný iným menom, nebude braný pri kompilácii do úvahy, a teda
 ani pri hodnotení.
 
-Pri spracovaní vstupov sa môžte inšpirovať
+Pri spracovaní vstupov sa môžete inšpirovať
 článkom [Práca s argumentami programu v jazyku C](https://zapr.interes.group/guides/program_arguments/#spracovanie-prep%c3%adna%c4%8dov-flags)
-na stránke predmetu, alebo inými technikami uvedených na internete, napr.:
+na stránke predmetu ZAPR, alebo inými technikami uvedených na internete, napr.:
 
 - [https://www.geeksforgeeks.org/cpp/command-line-arguments-in-cpp/](https://www.geeksforgeeks.org/cpp/command-line-arguments-in-cpp/)
 - [https://leimao.github.io/blog/Argument-Parser-Getopt-C/](https://leimao.github.io/blog/Argument-Parser-Getopt-C/)
 
-Pri implementácii si môžte vypomáhať s AI nástrojmi, pre inšpiráciu, riešenie problémov, či testovanie avšak **je prísne
-zakázané priame generovanie kódu vypracovania zadania, či kopírovanie väčších častí kódu z AI či internetu**. Táto práca
-je ukážkou vašich schopností a vedomostí programovania nie definovania promptu do AI.
+Pri implementácii si môžete vypomáhať s AI nástrojmi, pre inšpiráciu, diskusiu riešenia problémov, či testovanie avšak 
+**je prísne zakázané priame generovanie kódu vypracovania zadania, či kopírovanie väčších častí kódu z AI či internetu**
+. Táto práca je ukážkou vašich schopností a vedomostí programovania nie definovania promptu do AI.
 
 ### Implementácia kolekcií (mapa, fronta)
 
-V rámci implementácie zadania je povinné vypracovať vlastnú implementáciu jednej z použitých kolekcií, t.j. mapu alebo
-frontu. Druhý kolekciu môžte použiť zo štandartných STL C++ knižníc (`<map>` a `<queue>`).
+V rámci implementácie zadania **je povinné vypracovať vlastnú implementáciu jednej z použitých kolekcií**, 
+t.j. mapu alebo frontu. Druhú kolekciu môžte použiť zo štandartných STL C++ knižníc (`<map>` a `<queue>`).
 
 V rámci vlastnej implementácie môžte použiť iné STL knižnice, napr. `<vector>` alebo `<list>`, ktoré nie sú priamo
-daná kolekcia ktorú implementujete. Vami implementovaná kolekcia musí spĺňať funkcionalitu kolekcie tak ako je formálne
+daná kolekcia, ktorú implementujete. Vami implementovaná kolekcia musí spĺňať funkcionalitu kolekcie tak ako je formálne
 definovaná:
 
 - mapa - Kolekcia párov kľúč-hodnota, kde kľúč musí byť unikátny v rámci kolekcie. Operácie nad kolekciou sú uskutočnené
@@ -197,11 +213,11 @@ definovaná:
 
 Pre opakované použitie definovaných zariadení a pre uchovanie fronty incidentov pracuje program s dvoma súbormi:
 
-- zariadanie.txt
+- zariadenia.txt
 - incidenty.txt
 
-Oba súbory musia byť textové a uložené údaje musia byť voľne čitateľné aj mimo programu. Vnutorný formát súborov nie je
-definovaný, takže pokojne zvoľte taký s ktorými sa vám bude dobre pracovať.
+Oba súbory musia byť textové a uložené údaje musia byť voľne čitateľné aj mimo programu. Vnútorný formát súborov nie je
+definovaný, takže pokojne zvoľte taký, s ktorými sa vám bude dobre pracovať.
 
 Oba súbory sú vždy načítané pri spustení programu. Ak súbory neexistujú, program ich vytvorí prázdne.
 
@@ -264,7 +280,7 @@ Vypracovanie bude hodnotené aj ručne. Pri hodnotení vypracovania sa bude prih
 - spracovanie argumentov
 - implementácia a využitie kontajnerov/kolekcií
 - komunikácia chybového stavu programu používateľovi
-- štrukturovanie kódu
+- štruktúrovane kódu
 - dodržanie špecifikácie zadania
 
 ## Odovzdanie
