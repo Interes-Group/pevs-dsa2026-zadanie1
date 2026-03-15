@@ -285,11 +285,12 @@ Vypracovanie bude hodnotené aj ručne. Pri hodnotení vypracovania sa bude prih
 
 ## Odovzdanie
 
-Po prihlásení sa na zadanie 1 cez [GitHub Classroom]() vám je automaticky vytvorená kópia repozitára, ktorý bude
+Po prihlásení sa na zadanie 1 cez [GitHub Classroom](https://dsa.interes.group/assignments/assignment1) 
+vám je automaticky vytvorená kópia repozitára, ktorý bude
 nastavený ako privátny pre vás na vypracovanie (t.j. máte povolený commit a push do repozitára). Skontrolujte si, či sa
 váš repozitár nachádza pod skupinou _Interes-Group_, inak vyučujúci nemajú prístup ku vášmu repozitáru a zadanie sa
 nepovažuje za odovzdané. Ak sa vám repozitár nevytvorí ihneď kontaktuje vyučujúceho na MS Teams alebo na univerzitnom
-emaily. Je prísne zakázané dávať prístup k vášmu repozitára inému študentovi, alebo osobe, ktorá nie je vyučujúci. V
+emaily. Je prísne zakázané dávať prístup k vášmu repozitáru inému študentovi, alebo osobe, ktorá nie je vyučujúci. V
 repozitáry by sa mali vytvoriť dve vetvy `main` a `feedback` a vytvorí sa tzv. pull request z vetvy `main` do vetvy
 `feedback`. **Váš kód pushujte (t.j. `git push`) do vetvy `main`**. Hodnotenie vypracovania, ako aj komentár ku kódu,
 uvidíte v danom pull requeste. Ak sa vám vetva `feedback` alebo pull request nevytvorí ihneď kontaktuje vyučujúceho na
