@@ -3,7 +3,7 @@
 # 🛡️ SENTINEL – Systém pre spracovanie sieťových hrozieb
 
 ![C++ 17](https://img.shields.io/badge/language-C++17-blue)
-![Deadline 25.03.2026 23:59](https://img.shields.io/badge/deadline-25.03.2026%2023%3A59-red)
+![Deadline 29.03.2026 23:59](https://img.shields.io/badge/deadline-29.03.2026%2023%3A59-red)
 [![Github Classrom](https://img.shields.io/badge/GitHub-Classroom-green)](https://classroom.github.com/classrooms)
 [![Static Badge](https://img.shields.io/badge/Web-DSA.Interes.Group-aquamarine)](https://dsa.interes.group/assignments/assignments1)
 
@@ -302,7 +302,7 @@ Pri zmene týchto súborov môže byť vypracovanie ohodnotené 0 bodmi.
 
 Vypracovanie zadania priebežne commitujte (`git commit`)/pushujte (`git push`) do repozitára vytvoreného GitHubom
 pre toto zadanie. Váš kód commitujte/pushujte do vetvy `main`. Hodnotený bude posledný commit/push do termínu odovzdania
-vypracovania. Vypracovanie je nutné odovzdať/commitnúť/pushnúť do repozitára **do 25.03.2026 23:59**. Neodovzdanie je
+vypracovania. Vypracovanie je nutné odovzdať/commitnúť/pushnúť do repozitára **do 29.03.2026 23:59**. Neodovzdanie je
 hodnotené 0 bodmi.
 
 V prípade otázok, alebo technických problémov môžete kontaktovať vyučujúcich na MS Teams alebo na univerzitnom emaily.
